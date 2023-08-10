@@ -3,24 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserFormComponent } from './components/admin/user-form/user-form.component';
-import { ViewComponent } from './components/customer/view/view.component';
-import { RolFormComponent } from './components/admin/rol-form/rol-form.component';
-import { UserListComponent } from './components/admin/user-list/user-list.component';
-import { LoginComponent } from './components/shared/login/login.component';
+import { HomeComponent } from './components/shared/home/home.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { TopbarComponent } from './components/shared/topbar/topbar.component';
+import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
+import { UserformComponent } from './components/admin/userform/userform.component';
+import { UserlistComponent } from './components/admin/userlist/userlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormComponent,
-    ViewComponent,
-    RolFormComponent,
-    UserListComponent,
-    LoginComponent,
+    HomeComponent,
     SidebarComponent,
-    NavbarComponent,
+    FooterComponent,
+    TopbarComponent,
+    DashboardComponent,
+    UserformComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,
