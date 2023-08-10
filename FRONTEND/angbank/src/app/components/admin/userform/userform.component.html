@@ -14,36 +14,55 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
             </div>
-            <form class="user">
+
+            <form [formGroup]="formModel"(ngSubmit)="getDataForm()" class="user">
+              
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="identificationNumber" formControlName="identificationNumber"
+                  placeholder="Identification Number">
+              </div>
+              
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                  <input type="text" class="form-control form-control-user" id="firstName" formControlName="firstName"
                     placeholder="First Name">
+                    <p class="error" *ngIf="checkControl('firstName', 'required')">Campo requerido</p>
+                    <p class="error" *ngIf="checkControl('firstName', 'minlength')">Longitud minina de 3 carcaters</p>
                 </div>
+
                 <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="exampleLastName"
-                    placeholder="Last Name">
+                  <input type="text" class="form-control form-control-user" id="lastName" formControlName="lastName"
+                    placeholder="Last Name">   
                 </div>
+
               </div>
               <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                <input type="date" class="form-control form-control-user" id="birthdate" formControlName="birthdate"
+                  placeholder="Birthdate">
+              </div>
+
+              <div class="form-group">
+                <input type="email" class="form-control form-control-user" id="emailAddress" formControlName="emailAddress"
                   placeholder="Email Address">
               </div>
+
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                    placeholder="Password">
+                  <input type="password" class="form-control form-control-user" id="phoneNumber" formControlName="phoneNumber"
+                    placeholder="Phone Number">
                 </div>
+
                 <div class="col-sm-6">
-                  <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
-                    placeholder="Repeat Password">
+                  <input type="text" class="form-control form-control-user" id="rol" formControlName="rol"
+                    placeholder="Rol">
                 </div>
               </div>
-              <a href="login.html" class="btn btn-primary btn-user btn-block">
-                Register Account
-              </a>
-               
+
+              <input type="submit" value="Enviar" class="btn btn-primary btn-user btn-block" [disabled]="!formModel.valid">
+              {{formModel.valid}}
+              
             </form>
+
             <hr>
             <div class="text-center">
               <a class="small" href="forgot-password.html">Forgot Password?</a>

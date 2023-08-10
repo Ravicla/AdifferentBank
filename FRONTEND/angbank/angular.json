@@ -38,9 +38,11 @@
               "src/assets/vendor/chart.js/Chart.min.js",
               "src/assets/js/demo/chart-area-demo.js",
               "src/assets/js/demo/chart-pie-demo.js",
+              "src/assets/js/demo/chart-bar-demo.js",  
               "src/assets/vendor/datatables/jquery.dataTables.min.js",
               "src/assets/vendor/datatables/dataTables.bootstrap4.min.js",
-              "src/assets/js/demo/datatables-demo.js"  
+              "src/assets/js/demo/datatables-demo.js",
+              "src/assets/vendor/chart.js/Chart.min.js"
             ]
           },
           "configurations": {
