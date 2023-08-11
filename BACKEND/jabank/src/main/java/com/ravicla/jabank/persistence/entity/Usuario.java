@@ -3,6 +3,7 @@ package com.ravicla.jabank.persistence.entity;
 import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")

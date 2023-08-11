@@ -2,6 +2,7 @@ package com.ravicla.jabank.domain;
 
 import javax.persistence.Column;
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -12,6 +13,8 @@ public class User {
   private Date birthdate;
   private String emailAddress;
   private String phoneNumber;
+
+  private List<Rol> rol;
 
 
   public int getUserId() {
@@ -70,4 +73,11 @@ public class User {
     this.phoneNumber = phoneNumber;
   }
 
+  public List<Rol> getRol() {
+    return rol;
+  }
+
+  public void setRol(List<Rol> rol) {
+    this.rol = rol;
+  }
 }

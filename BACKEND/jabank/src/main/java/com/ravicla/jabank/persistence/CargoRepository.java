@@ -6,10 +6,11 @@ import com.ravicla.jabank.persistence.crud.CargoCrudRepository;
 import com.ravicla.jabank.persistence.entity.Cargo;
 import com.ravicla.jabank.persistence.mapper.RolMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Repository
 public class CargoRepository implements RolRepository {
   @Autowired
   private CargoCrudRepository cargoCrudRepository;

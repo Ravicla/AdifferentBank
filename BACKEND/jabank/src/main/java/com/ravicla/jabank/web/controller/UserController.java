@@ -1,5 +1,6 @@
 package com.ravicla.jabank.web.controller;
 
+import com.ravicla.jabank.domain.Login;
 import com.ravicla.jabank.domain.User;
 import com.ravicla.jabank.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,19 @@ public class UserController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
+
+  @PostMapping("/login")
+  public ResponseEntity<User> login (@RequestBody Login login){
+      Optional<User> userOptional = userService.getLogin(login.getEmailAddress(), login.getIdentificationNumber());
+    if (userOptional.isPresent()) {
+      User user= userOptional.get();
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+
 
 
 }
