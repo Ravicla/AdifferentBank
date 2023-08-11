@@ -1,0 +1,59 @@
+<div class="container">
+
+  <!-- Outer Row -->
+  <div class="row justify-content-center">
+
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <div class="row">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="../../../../assets/img/form.png" class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-lg-6">
+              <div class="p-5">
+                <div class="text-center">
+                  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                </div>
+
+
+                <form [formGroup]="formModel"(ngSubmit)="getDataForm()" class="user">
+
+                  <div class="form-group">
+                    <input type="email" class="form-control form-control-user" id="emailAddress" formControlName="emailAddress"
+                      aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="password" class="form-control form-control-user" id="identificationNumber" formControlName="identificationNumber"
+                      placeholder="Password">
+                  </div>
+
+                 
+
+                  <input type="submit" value="Login" class="btn btn-primary btn-user btn-block" [disabled]="!formModel.valid">
+
+
+                  
+
+
+                </form>
+                <hr>
+                <div class="text-center">
+                  <a class="small" href="forgot-password.html">Forgot Password?</a>
+                </div>
+                <div class="text-center">
+                  <a class="small" href="register.html">Create an Account!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

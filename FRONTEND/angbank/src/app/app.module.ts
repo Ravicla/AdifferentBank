@@ -11,6 +11,7 @@ import { TopbarComponent } from './components/shared/topbar/topbar.component';
 import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
 import { UserformComponent } from './components/admin/userform/userform.component';
 import { UserlistComponent } from './components/admin/userlist/userlist.component';
+import { LoginComponent } from './components/shared/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UserlistComponent } from './components/admin/userlist/userlist.componen
     TopbarComponent,
     DashboardComponent,
     UserformComponent,
-    UserlistComponent
+    UserlistComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,40 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-userform',
-  templateUrl: './userform.component.html',
-  styleUrls: ['./userform.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class UserformComponent implements OnInit{
-
+export class LoginComponent implements OnInit{
   formModel: FormGroup
   constructor(){
     this.formModel= new FormGroup({
       //los datos se cogen del formControlName 
+      //validdar los correctos correos y cedulas
       identificationNumber: new FormControl('', [
-        Validators.required
-      ]),
-      firstName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3)
-      ]),
-      lastName: new FormControl('', [
-        //Validators.required
-      ]),
-      birthdate: new FormControl('', [
         //Validators.required
       ]),
       emailAddress: new FormControl('', [
         //Validators.required
       ]),
-      phoneNumber: new FormControl('', [
-        //Validators.required
-      ]),
-      rol: new FormControl('', [
-        //Validators.required
-      ])
+      
 
     }, [])
   }
@@ -57,5 +41,4 @@ export class UserformComponent implements OnInit{
       return false;
     }
   }
-
 }
