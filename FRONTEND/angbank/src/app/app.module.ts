@@ -9,9 +9,14 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { TopbarComponent } from './components/shared/topbar/topbar.component';
 import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
-import { UserformComponent } from './components/admin/userform/userform.component';
-import { UserlistComponent } from './components/admin/userlist/userlist.component';
 import { LoginComponent } from './components/shared/login/login.component';
+import { ActivityFormComponent } from './components/admin/activity-form/activity-form.component';
+import { CreditFormComponent } from './components/admin/credit-form/credit-form.component';
+import { UserFormComponent } from './components/admin/user-form/user-form.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { ActivityListComponent } from './components/admin/activity-list/activity-list.component';
+import { CreditListComponent } from './components/admin/credit-list/credit-list.component';
+import { UserCreditListComponent } from './components/admin/user-credit-list/user-credit-list.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +26,14 @@ import { LoginComponent } from './components/shared/login/login.component';
     FooterComponent,
     TopbarComponent,
     DashboardComponent,
-    UserformComponent,
-    UserlistComponent,
-    LoginComponent
+    LoginComponent,
+    ActivityFormComponent,
+    CreditFormComponent,
+    CreditListComponent,
+    UserFormComponent,
+    UserListComponent,
+    ActivityListComponent,
+    UserCreditListComponent,
   ],
   imports: [
     BrowserModule,

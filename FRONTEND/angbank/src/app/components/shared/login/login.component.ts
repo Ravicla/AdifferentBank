@@ -12,12 +12,14 @@ export class LoginComponent implements OnInit{
     this.formModel= new FormGroup({
       //los datos se cogen del formControlName 
       //validdar los correctos correos y cedulas
+      emailAddress: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
+      ]),
       identificationNumber: new FormControl('', [
         //Validators.required
       ]),
-      emailAddress: new FormControl('', [
-        //Validators.required
-      ]),
+      
       
 
     }, [])

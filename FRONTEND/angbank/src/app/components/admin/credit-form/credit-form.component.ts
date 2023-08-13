@@ -1,43 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-
-
 @Component({
-  selector: 'app-userform',
-  templateUrl: './userform.component.html',
-  styleUrls: ['./userform.component.css']
+  selector: 'app-credit-form',
+  templateUrl: './credit-form.component.html',
+  styleUrls: ['./credit-form.component.css']
 })
-export class UserformComponent implements OnInit{
+export class CreditFormComponent implements OnInit{
 
   formModel: FormGroup
   constructor(){
     this.formModel= new FormGroup({
       //los datos se cogen del formControlName 
-      identificationNumber: new FormControl('', [
-        Validators.required
-      ]),
-      firstName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3)
-      ]),
-      lastName: new FormControl('', [
+      fullName: new FormControl('', [
         //Validators.required
       ]),
-      birthdate: new FormControl('', [
+      activity: new FormControl('', [
+        //Validators.required,
+      ]),
+      cost: new FormControl('', [
+        //Validators.required
+        this.costValidator
+      ]),
+      description: new FormControl('', [
         //Validators.required
       ]),
-      emailAddress: new FormControl('', [
+      activityDate: new FormControl('', [
         //Validators.required
       ]),
-      phoneNumber: new FormControl('', [
-        //Validators.required
-      ]),
-      rol: new FormControl('', [
-        //Validators.required
-      ])
-
     }, [])
   }
+
+  costValidator(pControlName: AbstractControl): any {
+    const cost: number = parseInt(pControlName.value)
+    if (isNaN(cost)) {
+      return { 'costvalidator': 'El valor introducido no es un numero' }
+    } else if (cost < 1 || cost > 2) {
+      return { 'costvalidator': 'El valor es de 1 o 2' }
+    }
+    return null
+  }
+
 
   ngOnInit(): void {
   }

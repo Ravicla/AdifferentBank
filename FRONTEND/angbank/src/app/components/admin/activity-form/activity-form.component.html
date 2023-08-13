@@ -1,0 +1,67 @@
+<div class="container">
+
+  <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+      <!-- Nested Row within Card Body -->
+      <div class="row">
+
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="../../../../assets/img/form.png" class="img-fluid" alt="Sample image">
+        </div>
+
+        <div class="col-lg-7">
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Create an Activity!</h1>
+              <p class="mb-4">We get it, stuff happens. Just enter your email address below
+                and we'll send you a link to reset your password!
+              </p>
+            </div>
+
+            <form [formGroup]="formModel"(ngSubmit)="getDataForm()" class="user">
+              <!--para escoger el nombre -->
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="fullName" formControlName="fullName"
+                  placeholder="Full Name">
+              </div>
+
+              <div class="form-group row">
+                <!--para escoger la actividad -->
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control form-control-user" id="activity" formControlName="activity"
+                    placeholder="Activity">
+                </div>
+
+                <div class="col-sm-6">
+                  <!--para escoger el valor con limitacion -->
+                  <input type="text" class="form-control form-control-user" id="cost" formControlName="cost"
+                    placeholder="Cost">
+                    <p class="error" *ngIf="checkControl('cost', 'costvalidator')">{{ formModel.get('cost')?.errors?.['costvalidator'] }}</p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control form-control-user" id="description" formControlName="description"
+                  placeholder="Description">
+              </div>
+
+              <div class="form-group">
+                <input type="date" class="form-control form-control-user" id="activityDate" formControlName="activityDate"
+                  placeholder="Activity Date">
+              </div>
+
+              <input type="submit" value="Create Activity" class="btn btn-primary btn-user btn-block" [disabled]="!formModel.valid">
+           
+              
+            </form>
+
+           
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
