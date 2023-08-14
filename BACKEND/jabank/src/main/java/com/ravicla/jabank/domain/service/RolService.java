@@ -18,6 +18,7 @@ public class RolService {
     List<Rol> rolGetAll = rolRepository.getAll();
     return (List<Rol>) rolGetAll;
   }
+
   public Optional<Rol> getRol(int rolId){
     Optional<Rol> rolIdOut = rolRepository.getRol(rolId);
     return (Optional<Rol>) rolIdOut;

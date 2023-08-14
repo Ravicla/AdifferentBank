@@ -14,11 +14,11 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public class CargoUsuarioRepository implements RolUserRepository {
-
   @Autowired
   private CargoUsuarioCrudRepository cargoUsuarioCrudRepository;
   @Autowired
   private RolUserMapper rolUserMapper;
+
   @Override
   public List<RolUser> getAll() {
     List<CargoUsuario>cargoUsuarios = (List<CargoUsuario>) cargoUsuarioCrudRepository.findAll();
@@ -35,7 +35,7 @@ public class CargoUsuarioRepository implements RolUserRepository {
     List<CargoUsuario> listaCargoUsuario = new ArrayList<>();
     listaCargoUsuario = cargoUsuarioCrudRepository.findByIdUsuario(userId);
     List<RolUser> listRolUser = new ArrayList<>();
-    for (CargoUsuario cargo :listaCargoUsuario) {
+    for (CargoUsuario cargo : listaCargoUsuario) {
       RolUser rolUser=rolUserMapper.toRolUser (cargo);
       listRolUser.add(rolUser);
     }

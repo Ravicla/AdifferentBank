@@ -2,7 +2,6 @@ package com.ravicla.jabank.domain;
 
 public class RolUser {
   private int rolUserId;
-
   private int rolId;
   private int userId;
 
