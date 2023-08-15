@@ -2,6 +2,7 @@ package com.ravicla.jabank.web.controller;
 
 import com.ravicla.jabank.domain.Login;
 import com.ravicla.jabank.domain.User;
+import com.ravicla.jabank.domain.UserActivities;
 import com.ravicla.jabank.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,7 @@ public class UserController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
+
 
   @PostMapping("/save")
   public ResponseEntity<User> save (@RequestBody User user){
@@ -64,7 +66,15 @@ public class UserController {
     }
   }
 
-
-
+  @GetMapping("/{id}/activities")
+  public ResponseEntity<UserActivities> getUserActivities(@PathVariable("id") int userId) {
+    Optional<UserActivities> userOptional = userService.getUseActivities(userId);
+    if (userOptional.isPresent()) {
+      UserActivities user = userOptional.get();
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
 
 }

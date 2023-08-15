@@ -1,8 +1,7 @@
 package com.ravicla.jabank.domain.service;
 
-import com.ravicla.jabank.domain.Rol;
-import com.ravicla.jabank.domain.RolUser;
-import com.ravicla.jabank.domain.User;
+import com.ravicla.jabank.domain.*;
+import com.ravicla.jabank.domain.repository.ActivityRepository;
 import com.ravicla.jabank.domain.repository.RolRepository;
 import com.ravicla.jabank.domain.repository.RolUserRepository;
 import com.ravicla.jabank.domain.repository.UserRepository;
@@ -20,6 +19,8 @@ public class UserService {
   private RolRepository rolRepository;
   @Autowired
   private RolUserRepository rolUserRepository;
+  @Autowired
+  private ActivityRepository activityRepository;
 
 
   public List<User> getAll(){
@@ -83,5 +84,22 @@ public class UserService {
       userRepository.delete(userId);
       return true;
     }).orElse(false);
+  }
+
+  public Optional<UserActivities> getUseActivities(int userId){
+    // Crear una instancia de la clase User
+    UserActivities userActivities=new UserActivities();
+    Optional<UserActivities> optionalUser = Optional.of(userActivities);
+    Optional<User> user = userRepository.getUser(userId);
+    if(user.isPresent())
+    {
+      optionalUser.get().setUserId(user.get().getUserId());
+      optionalUser.get().setEmailAddress(user.get().getEmailAddress());
+      optionalUser.get().setFirstName(user.get().getFirstName());
+      //completar
+      List<Activity> activityList = activityRepository.getUserActivities(user.get().getUserId()).get();
+      optionalUser.get().setActivityList(activityList);
+    }
+    return optionalUser;
   }
 }
