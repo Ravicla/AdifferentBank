@@ -12,7 +12,7 @@ import java.util.Optional;
 public class RolService {
 
   @Autowired
-  public RolRepository rolRepository;
+  private RolRepository rolRepository;
 
   public List<Rol> getAll(){
     List<Rol> rolGetAll = rolRepository.getAll();
@@ -20,13 +20,13 @@ public class RolService {
   }
 
   public Optional<Rol> getRol(int rolId){
-    Optional<Rol> rolIdOut = rolRepository.getRol(rolId);
-    return (Optional<Rol>) rolIdOut;
+    Optional<Rol> rol = rolRepository.getRol(rolId);
+    return (Optional<Rol>) rol;
   }
 
   public Rol save(Rol rol){
-    Rol rolSaveOut = rolRepository.save(rol);
-    return rolSaveOut;
+    Rol rolSave = rolRepository.save(rol);
+    return rolSave;
   }
 
   public boolean delete(int rolId){

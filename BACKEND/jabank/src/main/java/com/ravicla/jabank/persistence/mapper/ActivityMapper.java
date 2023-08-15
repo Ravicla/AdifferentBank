@@ -14,11 +14,12 @@ public interface ActivityMapper {
 
   @Mappings({
     @Mapping(source = "idActividad", target = "activityId"),
-    @Mapping(source = "actividad", target = "activity"),
     @Mapping(source = "valor", target = "cost"),
     @Mapping(source = "descripcion", target = "description"),
     @Mapping(source = "fecha", target = "date"),
-    @Mapping(source = "idUsuario", target = "userId")
+    @Mapping(source = "idUsuario", target = "userId"),
+    @Mapping(source = "idTipoActividad", target = "typeActivityId")
+
   })
   Activity toActivity(Actividad actividad);
   List<Activity> toActivitys(List<Actividad>actividads);

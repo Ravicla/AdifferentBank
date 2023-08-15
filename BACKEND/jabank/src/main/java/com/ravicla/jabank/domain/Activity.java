@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class Activity {
   private int activityId;
-  private String activity;
   private double cost;
   private String description;
   private Date date;
   private int userId;
+  private int typeActivityId;
 
   public int getActivityId() {
     return activityId;
@@ -19,13 +19,7 @@ public class Activity {
     this.activityId = activityId;
   }
 
-  public String getActivity() {
-    return activity;
-  }
 
-  public void setActivity(String activity) {
-    this.activity = activity;
-  }
 
   public double getCost() {
     return cost;
@@ -57,5 +51,13 @@ public class Activity {
 
   public void setUserId(int userId) {
     this.userId = userId;
+  }
+
+  public int getTypeActivityId() {
+    return typeActivityId;
+  }
+
+  public void setTypeActivityId(int typeActivityId) {
+    this.typeActivityId = typeActivityId;
   }
 }

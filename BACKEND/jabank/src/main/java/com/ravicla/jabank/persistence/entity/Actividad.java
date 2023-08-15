@@ -10,12 +10,14 @@ public class Actividad {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "actividad_id")
   private Integer idActividad;
-  private String actividad;
   private double valor;
   private String descripcion;
   private Date fecha;
   @Column(name = "usuario_id")
   private Integer idUsuario;
+
+  @Column(name = "tipo_actividad_id")
+  private Integer idTipoActividad;
 
   public Integer getIdActividad() {
     return idActividad;
@@ -25,13 +27,7 @@ public class Actividad {
     this.idActividad = idActividad;
   }
 
-  public String getActividad() {
-    return actividad;
-  }
 
-  public void setActividad(String actividad) {
-    this.actividad = actividad;
-  }
 
   public double getValor() {
     return valor;
@@ -63,5 +59,13 @@ public class Actividad {
 
   public void setIdUsuario(Integer idUsuario) {
     this.idUsuario = idUsuario;
+  }
+
+  public Integer getIdTipoActividad() {
+    return idTipoActividad;
+  }
+
+  public void setIdTipoActividad(Integer idTipoActividad) {
+    this.idTipoActividad = idTipoActividad;
   }
 }

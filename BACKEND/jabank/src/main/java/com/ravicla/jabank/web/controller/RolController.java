@@ -14,7 +14,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/rols")
 public class RolController {
-
   @Autowired
   private RolService rolService;
 
@@ -27,7 +26,7 @@ public class RolController {
   public ResponseEntity<Rol> getRolById(@PathVariable("id") int rolId) {
     Optional<Rol> rolOptional = rolService.getRol(rolId);
     if (rolOptional.isPresent()) {
-      Rol rol= rolOptional.get();
+      Rol rol = rolOptional.get();
       return new ResponseEntity<>(rol, HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,19 +35,16 @@ public class RolController {
 
   @PostMapping("/save")
   public ResponseEntity<Rol> save (@RequestBody Rol rol){
-    //log.info("IN: "+ jsonUtil.toJson(user));
     return new ResponseEntity<>(rolService.save(rol), HttpStatus.CREATED);
   }
 
   @PutMapping("/update")
   public ResponseEntity<Rol> update (@RequestBody Rol rol){
-    //log.info("IN: "+ jsonUtil.toJson(user));
     return new ResponseEntity<>(rolService.save(rol), HttpStatus.CREATED);
   }
 
   @DeleteMapping("/delete/{id}")
   public ResponseEntity delete(@PathVariable("id") int rolId){
-    //log.info("IN: " + jsonUtil.toJson(userId));
     if(rolService.delete(rolId)){
       return new ResponseEntity<>(HttpStatus.OK);
     }else {
