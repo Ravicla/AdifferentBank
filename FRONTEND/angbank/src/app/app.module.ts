@@ -17,9 +17,10 @@ import { UserFormComponent } from './components/admin/user-form/user-form.compon
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { ActivityListComponent } from './components/admin/activity-list/activity-list.component';
 import { CreditListComponent } from './components/admin/credit-list/credit-list.component';
-import { UserCreditListComponent } from './components/admin/user-credit-list/user-credit-list.component';
 import { Page404Component } from './components/shared/page404/page404.component';
 import { UserViewComponent } from './components/admin/user-view/user-view.component';
+import { RolSettingComponent } from './components/admin/setting/rol-setting/rol-setting.component';
+import { ActivitySettingComponent } from './components/admin/setting/activity-setting/activity-setting.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +37,10 @@ import { UserViewComponent } from './components/admin/user-view/user-view.compon
     UserFormComponent,
     UserListComponent,
     ActivityListComponent,
-    UserCreditListComponent,
     Page404Component,
     UserViewComponent,
+    RolSettingComponent,
+    ActivitySettingComponent
   ],
   imports: [
     BrowserModule,

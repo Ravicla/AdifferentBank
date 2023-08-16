@@ -7,24 +7,33 @@ import { UserFormComponent } from './components/admin/user-form/user-form.compon
 import { CreditListComponent } from './components/admin/credit-list/credit-list.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { ActivityListComponent } from './components/admin/activity-list/activity-list.component';
-import { UserCreditListComponent } from './components/admin/user-credit-list/user-credit-list.component';
 import { Page404Component } from './components/shared/page404/page404.component';
 import { UserViewComponent } from './components/admin/user-view/user-view.component';
+import { ActivitySettingComponent } from './components/admin/setting/activity-setting/activity-setting.component';
+import { RolSettingComponent } from './components/admin/setting/rol-setting/rol-setting.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'newUser', component: UserFormComponent},
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'newUser', component: UserFormComponent },
 
-  {path: 'userList', component: UserListComponent},
-  {path: 'userList/:url', component: UserViewComponent},
+  { path: 'userList', component: UserListComponent },
+  { path: 'userList/:id', component: UserViewComponent },
+  
+  { path: 'newActivity', component: ActivityFormComponent },
+  { path: 'activityList', component: ActivityListComponent },
+  { path: 'newCredit', component: CreditFormComponent },
+  { path: 'creditList', component: CreditListComponent },
 
-  {path: 'newActivity', component: ActivityFormComponent},
-  {path: 'activityList', component: ActivityListComponent},
-  {path: 'newCredit', component: CreditFormComponent},
-  {path: 'creditList', component: CreditListComponent},
-  {path: 'userCreditList', component: UserCreditListComponent},
-  { path: '**', component: Page404Component} 
+  { path: 'activitySetting', component: ActivitySettingComponent },
+  { path: 'rolSetting', component: RolSettingComponent },
+
+
+
+  { path: '**', component: Page404Component }, 
+
+  
+
   
 ];
 

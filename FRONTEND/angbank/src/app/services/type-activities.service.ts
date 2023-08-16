@@ -1,19 +1,19 @@
-import { HttpClient,  } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { User } from '../interfaces/user.interface';
+import { TypeActivity } from '../interfaces/type-activity.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class TypeActivitiesService {
 
-  baseUrl: string = 'http://localhost:8080/dbbank/api/users/';
+  baseUrl: string = 'http://localhost:8080/dbbank/api/typeActivities/';
   constructor(private httpClient: HttpClient) {
   }
 
-  create(pUser: User): Promise<any> {  
-    return lastValueFrom(this.httpClient.post<User>(this.baseUrl+'save', pUser))
+  create(pTypeActivity: TypeActivity): Promise<any> {  
+    return lastValueFrom(this.httpClient.post<TypeActivity>(this.baseUrl+'save', pTypeActivity))
   }
 
   getAll(): Promise<any> {
@@ -24,17 +24,11 @@ export class UsersService {
     return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}${pId}`))
   }
 
-  update(pUser: User): Promise<any> {
-    return lastValueFrom(this.httpClient.put<any>(`${this.baseUrl+'update'}`, pUser))
+  update(pTypeActivity: TypeActivity): Promise<any> {
+    return lastValueFrom(this.httpClient.put<any>(`${this.baseUrl+'update'}`, pTypeActivity))
   }
 
   delete(pId: number): Promise<any> {
     return lastValueFrom(this.httpClient.delete<any>(`${this.baseUrl+'delete/'}${pId}`))
-  } 
-
-  
-  
-  
-  
-  
+  }
 }

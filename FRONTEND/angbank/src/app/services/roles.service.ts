@@ -6,9 +6,9 @@ import { lastValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class RolsService {
+export class RolesService {
 
-  baseUrl: string = 'http://localhost:8080/dbbank/api/rols/';
+  baseUrl: string = 'http://localhost:8080/dbbank/api/roles/';
   constructor(private httpClient: HttpClient) {
   }
 
