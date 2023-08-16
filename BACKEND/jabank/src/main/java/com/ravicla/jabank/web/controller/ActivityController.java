@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/activitys")
+@RequestMapping("/activities")
 public class ActivityController {
   @Autowired
   private ActivityService activityService;

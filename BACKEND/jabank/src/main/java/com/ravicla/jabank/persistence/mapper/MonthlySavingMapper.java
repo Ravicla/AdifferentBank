@@ -17,7 +17,7 @@ public interface MonthlySavingMapper {
     @Mapping(source = "idUsuario", target = "userId")
   })
   MonthlySaving toMonthlySaving(AhorroMensual ahorroMensual);
-  List<MonthlySaving>toMonthlySavings(List<AhorroMensual>ahorroMensuals);
+  List<MonthlySaving>toMonthlySavings(List<AhorroMensual>ahorroMensuales);
   @InheritInverseConfiguration
   AhorroMensual toAhorroMensual(MonthlySaving monthlySaving);
 }

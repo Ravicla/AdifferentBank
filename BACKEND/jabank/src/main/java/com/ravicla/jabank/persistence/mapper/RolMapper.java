@@ -17,7 +17,7 @@ public interface RolMapper {
 
   })
   Rol toRol(Cargo cargo);
-  List<Rol> toRols(List<Cargo>cargos);
+  List<Rol> toRoles(List<Cargo>cargos);
   @InheritInverseConfiguration
   Cargo toCargo(Rol rol);
 }

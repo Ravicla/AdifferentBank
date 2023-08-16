@@ -2,7 +2,7 @@ package com.ravicla.jabank.domain;
 
 import java.util.List;
 
-public class UserActivities extends User {
+public class UserActivity extends User {
 
   private List<Activity> activityList;
 

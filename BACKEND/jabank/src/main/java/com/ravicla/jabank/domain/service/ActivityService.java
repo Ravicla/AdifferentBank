@@ -1,7 +1,6 @@
 package com.ravicla.jabank.domain.service;
 
 import com.ravicla.jabank.domain.Activity;
-import com.ravicla.jabank.domain.Rol;
 import com.ravicla.jabank.domain.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

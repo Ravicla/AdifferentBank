@@ -2,6 +2,7 @@ package com.ravicla.jabank.domain;
 
 import javax.persistence.Column;
 import java.util.Date;
+import java.util.List;
 
 public class Activity {
   private int activityId;
@@ -10,6 +11,8 @@ public class Activity {
   private Date date;
   private int userId;
   private int typeActivityId;
+  private TypeActivity typeActivity;
+
 
   public int getActivityId() {
     return activityId;
@@ -59,5 +62,13 @@ public class Activity {
 
   public void setTypeActivityId(int typeActivityId) {
     this.typeActivityId = typeActivityId;
+  }
+
+  public TypeActivity getTypeActivity() {
+    return typeActivity;
+  }
+
+  public void setTypeActivity(TypeActivity typeActivity) {
+    this.typeActivity = typeActivity;
   }
 }

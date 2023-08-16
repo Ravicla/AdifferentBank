@@ -1,13 +1,11 @@
 package com.ravicla.jabank.domain.service;
 
 import com.ravicla.jabank.domain.*;
-import com.ravicla.jabank.domain.repository.ActivityRepository;
-import com.ravicla.jabank.domain.repository.RolRepository;
-import com.ravicla.jabank.domain.repository.RolUserRepository;
-import com.ravicla.jabank.domain.repository.UserRepository;
+import com.ravicla.jabank.domain.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.Authenticator;
 import java.util.*;
 
 @Service
@@ -21,19 +19,23 @@ public class UserService {
   private RolUserRepository rolUserRepository;
   @Autowired
   private ActivityRepository activityRepository;
+  @Autowired
+  private MonthlySavingRepository monthlySavingRepository;
+   @Autowired
+   private TypeActivityRepository typeActivityRepository;
 
 
   public List<User> getAll(){
     List<User> userGetAll = userRepository.getAll();
     for (User users : userGetAll) {
       List<RolUser> rolUsers = rolUserRepository.getByIdUsuario(users.getUserId());
-      List<Rol> rols = new ArrayList<>();
+      List<Rol> roles = new ArrayList<>();
       for (RolUser rolUser : rolUsers) {
         Rol rol = new Rol();
         rol = rolRepository.getRol(rolUser.getRolId()).get();
-        rols.add(rol);
+        roles.add(rol);
       }
-      users.setRol(rols);
+      users.setRol(roles);
     }
     return (List<User>) userGetAll;
   }
@@ -41,14 +43,15 @@ public class UserService {
   public Optional<User> getUser(int userId){
     Optional<User> user = userRepository.getUser(userId);
     List<RolUser> rolUsers = rolUserRepository.getByIdUsuario(user.get().getUserId());
-    List<Rol> rols = new ArrayList<>();
+
+    List<Rol> roles = new ArrayList<>();
     for (RolUser rolUser : rolUsers) {
       Rol rol = new Rol();
       rol = rolRepository.getRol(rolUser.getRolId()).get();
-      rols.add(rol);
+      roles.add(rol);
       rol.setRol(rolRepository.getRol(rol.getRolId()).get().getRol());
     }
-    user.get().setRol(rols);
+    user.get().setRol(roles);
     return (Optional<User>) user;
   }
 
@@ -56,13 +59,13 @@ public class UserService {
   public Optional<User> getLogin(String correo, String cedula){
     Optional<User> user = userRepository.getLogin(correo, cedula);
     List<RolUser> rolUsers = rolUserRepository.getByIdUsuario(user.get().getUserId());
-    List<Rol> rols = new ArrayList<>();
+    List<Rol> roles = new ArrayList<>();
     for (RolUser rolUser : rolUsers) {
       Rol rol = new Rol();
       rol = rolRepository.getRol(rolUser.getRolId()).get();
-      rols.add(rol);
+      roles.add(rol);
     }
-    user.get().setRol(rols);
+    user.get().setRol(roles);
     return (Optional<User>) user;
   }
 
@@ -86,20 +89,48 @@ public class UserService {
     }).orElse(false);
   }
 
-  public Optional<UserActivities> getUseActivities(int userId){
+  public Optional<UserActivity> getUserActivities(int userId){
     // Crear una instancia de la clase User
-    UserActivities userActivities=new UserActivities();
-    Optional<UserActivities> optionalUser = Optional.of(userActivities);
+    UserActivity userActivities = new UserActivity();
+    Optional<UserActivity> optionalUser = Optional.of(userActivities);
     Optional<User> user = userRepository.getUser(userId);
     if(user.isPresent())
     {
       optionalUser.get().setUserId(user.get().getUserId());
-      optionalUser.get().setEmailAddress(user.get().getEmailAddress());
       optionalUser.get().setFirstName(user.get().getFirstName());
+      optionalUser.get().setLastName(user.get().getLastName());
       //completar
       List<Activity> activityList = activityRepository.getUserActivities(user.get().getUserId()).get();
       optionalUser.get().setActivityList(activityList);
+
+      for (Activity activity : activityList) {
+        TypeActivity typeActivity = new TypeActivity();
+        typeActivity = typeActivityRepository.getTypeActivity(activity.getTypeActivityId()).get();
+        activity.setTypeActivity(typeActivity);
+      }
+
+
     }
+
+
+    return optionalUser;
+  }
+
+  public Optional<UserMonthlySaving> getUserMonthlySaving(int userId){
+    // Crear una instancia de la clase User
+    UserMonthlySaving userMonthlySaving  = new UserMonthlySaving();
+    Optional<UserMonthlySaving> optionalUser = Optional.of(userMonthlySaving);
+    Optional<User> user = userRepository.getUser(userId);
+    if(user.isPresent())
+    {
+      optionalUser.get().setUserId(user.get().getUserId());
+      optionalUser.get().setFirstName(user.get().getFirstName());
+      optionalUser.get().setLastName(user.get().getLastName());
+      //completar
+      List<MonthlySaving> monthlySavingList = monthlySavingRepository.getUserMonthlySavings(user.get().getUserId()).get();
+      optionalUser.get().setMonthlySavingList (monthlySavingList);
+    }
+
     return optionalUser;
   }
 }

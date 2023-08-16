@@ -1,10 +1,6 @@
 package com.ravicla.jabank.persistence.mapper;
 
-import com.ravicla.jabank.domain.Activity;
-import com.ravicla.jabank.domain.Rol;
 import com.ravicla.jabank.domain.TypeActivity;
-import com.ravicla.jabank.persistence.entity.Actividad;
-import com.ravicla.jabank.persistence.entity.Cargo;
 import com.ravicla.jabank.persistence.entity.TipoActividad;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -21,7 +17,7 @@ public interface TypeActivityMapper {
 
   })
   TypeActivity toTypeActivity(TipoActividad tipoActividad);
-  List<TypeActivity> toTypeActivitys(List<TipoActividad>tipoActividads);
+  List<TypeActivity> toTypeActivities(List<TipoActividad>tipoActividades);
   @InheritInverseConfiguration
   TipoActividad toTipoActividad(TypeActivity typeActivity);
 }

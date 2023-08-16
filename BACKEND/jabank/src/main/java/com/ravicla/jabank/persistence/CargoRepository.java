@@ -20,7 +20,7 @@ public class CargoRepository implements RolRepository {
   @Override
   public List<Rol> getAll() {
     List<Cargo>cargos = (List<Cargo>) cargoCrudRepository.findAll();
-    return rolMapper.toRols(cargos);
+    return rolMapper.toRoles(cargos);
   }
 
   @Override

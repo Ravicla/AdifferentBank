@@ -22,8 +22,8 @@ public class ActividadRepository implements ActivityRepository {
 
   @Override
   public List<Activity> getAll() {
-    List<Actividad> actividads = (List<Actividad>) actividadCrudRepository.findAll();
-    return activityMapper.toActivitys(actividads);
+    List<Actividad> actividades = (List<Actividad>) actividadCrudRepository.findAll();
+    return activityMapper.toActivities(actividades);
   }
 
   @Override
@@ -34,12 +34,12 @@ public class ActividadRepository implements ActivityRepository {
   @Override
   public Optional<List<Activity>> getUserActivities(int userId) {
     return actividadCrudRepository.findByIdUsuario(userId).map(actividades -> {
-      List<Activity> lista = new ArrayList<>();
+      List<Activity> listActivities = new ArrayList<>();
       for (Actividad actividad : actividades) {
         Activity activity = activityMapper.toActivity(actividad);
-        lista.add(activity);
+        listActivities.add(activity);
       }
-      return lista;
+      return listActivities;
     });
   }
 

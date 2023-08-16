@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/typeActivitys")
+@RequestMapping("/typeActivities")
 public class TypeActivityController {
   @Autowired
   private TypeActivityService typeActivityService;

@@ -1,11 +1,10 @@
 package com.ravicla.jabank.domain;
 
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Date;
 import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
-
   private int userId;
   private String identificationNumber;
   private String firstName;

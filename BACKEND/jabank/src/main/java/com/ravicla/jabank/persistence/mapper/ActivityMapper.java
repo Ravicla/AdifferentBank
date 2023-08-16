@@ -22,7 +22,7 @@ public interface ActivityMapper {
 
   })
   Activity toActivity(Actividad actividad);
-  List<Activity> toActivitys(List<Actividad>actividads);
+  List<Activity> toActivities(List<Actividad>actividades);
   @InheritInverseConfiguration
   Actividad toActividad(Activity activity);
 }

@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface MonthlySavingRepository {
   List<MonthlySaving> getAll();
   Optional<MonthlySaving> getMonthlySaving(int monthlySavingId);
+  Optional<List<MonthlySaving>> getUserMonthlySavings(int userId);
   MonthlySaving save(MonthlySaving monthlySaving);
   void delete(int monthlySavingId);
 }

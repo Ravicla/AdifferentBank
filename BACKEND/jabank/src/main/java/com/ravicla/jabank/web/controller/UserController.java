@@ -2,7 +2,8 @@ package com.ravicla.jabank.web.controller;
 
 import com.ravicla.jabank.domain.Login;
 import com.ravicla.jabank.domain.User;
-import com.ravicla.jabank.domain.UserActivities;
+import com.ravicla.jabank.domain.UserActivity;
+import com.ravicla.jabank.domain.UserMonthlySaving;
 import com.ravicla.jabank.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -67,10 +68,21 @@ public class UserController {
   }
 
   @GetMapping("/{id}/activities")
-  public ResponseEntity<UserActivities> getUserActivities(@PathVariable("id") int userId) {
-    Optional<UserActivities> userOptional = userService.getUseActivities(userId);
+  public ResponseEntity<UserActivity> getUserActivities(@PathVariable("id") int userId) {
+    Optional<UserActivity> userOptional = userService.getUserActivities(userId);
     if (userOptional.isPresent()) {
-      UserActivities user = userOptional.get();
+      UserActivity user = userOptional.get();
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  @GetMapping("/{id}/monthlySavings")
+  public ResponseEntity<UserMonthlySaving> getUserMonthlySaving(@PathVariable("id") int userId) {
+    Optional<UserMonthlySaving> userOptional = userService.getUserMonthlySaving(userId);
+    if (userOptional.isPresent()) {
+      UserMonthlySaving user = userOptional.get();
       return new ResponseEntity<>(user, HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
