@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TypeActivity } from 'src/app/interfaces/type-activity.interface';
 import { TypeActivitiesService } from 'src/app/services/type-activities.service';
@@ -12,11 +13,20 @@ import { TypeActivitiesService } from 'src/app/services/type-activities.service'
 export class ActivitySettingComponent implements OnInit{
 
   typeActivities: TypeActivity | any;
-
+  formModel: FormGroup
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private typeActivitiesService: TypeActivitiesService
-  ) {}
+  ) 
+
+  {
+    this.formModel= new FormGroup({
+      description: new FormControl('', [
+        Validators.required
+      ])
+    }, [])
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async(params: any) => {
@@ -24,8 +34,23 @@ export class ActivitySettingComponent implements OnInit{
       if(response.error){
       }   
       this.typeActivities = response;
-      console.log(this.typeActivities);
     })
+  }
+
+  getDataForm(){
+    if (this.formModel.valid) {
+      console.log(this.formModel.value)
+    } else {
+      alert('el formulario no esta bien relleno')
+    }
+  }
+
+  checkControl(pControlName: string, pError: string): boolean {
+    if (this.formModel.get(pControlName)?.hasError(pError) && this.formModel.get(pControlName)?.touched) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

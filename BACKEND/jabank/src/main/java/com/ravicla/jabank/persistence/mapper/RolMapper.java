@@ -13,7 +13,7 @@ import java.util.List;
 public interface RolMapper {
   @Mappings({
     @Mapping(source = "idCargo", target = "rolId"),
-    @Mapping(source = "cargo", target = "rol"),
+    @Mapping(source = "cargo", target = "description"),
 
   })
   Rol toRol(Cargo cargo);

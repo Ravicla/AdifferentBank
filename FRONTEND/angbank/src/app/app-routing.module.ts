@@ -11,14 +11,19 @@ import { Page404Component } from './components/shared/page404/page404.component'
 import { UserViewComponent } from './components/admin/user-view/user-view.component';
 import { ActivitySettingComponent } from './components/admin/setting/activity-setting/activity-setting.component';
 import { RolSettingComponent } from './components/admin/setting/rol-setting/rol-setting.component';
+import { CaracteristicasComponent } from './components/admin/user-view/caracteristicas/caracteristicas.component';
+import { OpinionesComponent } from './components/admin/user-view/opiniones/opiniones.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'newUser', component: UserFormComponent },
 
-  { path: 'userList', component: UserListComponent },
-  { path: 'userList/:id', component: UserViewComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'user/:iduser', component: UserViewComponent, children: [
+    { path: 'caracteristicas', component: CaracteristicasComponent },
+    { path: 'opiniones', component: OpinionesComponent }
+  ] },
   
   { path: 'newActivity', component: ActivityFormComponent },
   { path: 'activityList', component: ActivityListComponent },

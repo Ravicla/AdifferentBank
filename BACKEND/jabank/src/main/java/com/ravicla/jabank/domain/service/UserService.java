@@ -49,7 +49,7 @@ public class UserService {
       Rol rol = new Rol();
       rol = rolRepository.getRol(rolUser.getRolId()).get();
       roles.add(rol);
-      rol.setRol(rolRepository.getRol(rol.getRolId()).get().getRol());
+      rol.setDescription(rolRepository.getRol(rol.getRolId()).get().getDescription());
     }
     user.get().setRol(roles);
     return (Optional<User>) user;
@@ -76,7 +76,7 @@ public class UserService {
       rolUser.setRolId(rol.getRolId());
       rolUser.setUserId(userSave.getUserId());
       rolUserRepository.save(rolUser);
-      rol.setRol(rolRepository.getRol(rol.getRolId()).get().getRol());
+      rol.setDescription(rolRepository.getRol(rol.getRolId()).get().getDescription());
     }
     userSave.setRol(user.getRol());
     return userSave;

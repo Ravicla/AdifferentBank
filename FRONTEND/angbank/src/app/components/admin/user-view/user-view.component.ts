@@ -10,19 +10,24 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UserViewComponent implements OnInit{
 
-  users: User | any;
+  user: User | any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private usersService: UsersService
   ) {}
-
+  
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(async(params: any) => {
-      let response = await this.usersService.getAll();
-      if(response.error){
-      }   
-      this.users = response;
-    })
+    this.activatedRoute.params.subscribe(async (params: any) => {
+      const userId = params['iduser'];
+      this.user = await this.usersService. getById(userId); // Cambiar a la función que obtiene un usuario por ID
+    });
+  }
+
+
+  changeStatus(user: User) {
+    user.status = !user.status;
   }
 
 }
+
+

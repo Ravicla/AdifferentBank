@@ -13,7 +13,7 @@ public interface MonthlySavingMapper {
   @Mappings({
     @Mapping(source = "idAhorroMensual", target = "monthlySavingId"),
     @Mapping(source = "fecha", target = "date"),
-    @Mapping(source = "valor", target = "cost"),
+    @Mapping(source = "valor", target = "value"),
     @Mapping(source = "idUsuario", target = "userId")
   })
   MonthlySaving toMonthlySaving(AhorroMensual ahorroMensual);

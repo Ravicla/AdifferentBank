@@ -19,6 +19,7 @@ public interface UserMapper {
     @Mapping(source = "fechaNacimiento", target = "birthdate"),
     @Mapping(source = "correo", target = "emailAddress"),
     @Mapping(source = "telefono", target = "phoneNumber"),
+    @Mapping(source = "estado", target = "status"),
   })
   User toUser(Usuario usuario);
   List<User> toUsers(List<Usuario>usuarios);

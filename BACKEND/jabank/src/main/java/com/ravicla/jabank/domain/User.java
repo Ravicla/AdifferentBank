@@ -12,6 +12,7 @@ public class User {
   private Date birthdate;
   private String emailAddress;
   private String phoneNumber;
+  private boolean status;
 
   private List<Rol> rol;
 
@@ -74,6 +75,14 @@ public class User {
 
   public List<Rol> getRol() {
     return rol;
+  }
+
+  public boolean isStatus() {
+    return status;
+  }
+
+  public void setStatus(boolean status) {
+    this.status = status;
   }
 
   public void setRol(List<Rol> rol) {

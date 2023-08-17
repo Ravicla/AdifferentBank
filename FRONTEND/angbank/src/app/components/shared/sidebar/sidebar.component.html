@@ -29,7 +29,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+      <a class="nav-link collapsed"[routerLink]="['/dashboard']" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
         aria-controls="collapseTwo">
         <i class="fas fa-fw fa-cog"></i>
         <span>Users</span>
@@ -38,7 +38,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Custom Components:</h6>
           <a class="collapse-item" routerLinkActive="active" [routerLink]="['/newUser']">Create a new user</a>
-          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/userList']">List Users</a>
+          <a class="collapse-item" routerLinkActive="active" [routerLink]="['/users']">List Users</a>
         </div>
       </div>
     </li>
@@ -56,7 +56,7 @@
     <!-- Nav Item - Pages Collapse Menu --> 
     
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCredit" aria-expanded="true"
+      <a class="nav-link collapsed" [routerLink]="['/']" data-toggle="collapse" data-target="#collapseCredit" aria-expanded="true"
         aria-controls="collapseCredit">
         <i class="fas fa-fw fa-folder"></i>
         <span>Credit</span>
@@ -73,7 +73,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+      <a class="nav-link collapsed" [routerLink]="['/']" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
         aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
         <span>Activity</span>
@@ -93,7 +93,7 @@
 
    <!-- Nav Item - Utilities Collapse Menu -->
    <li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+    <a class="nav-link collapsed" [routerLink]="['/']" data-toggle="collapse" data-target="#collapseUtilities"
       aria-expanded="true" aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"></i>
       <span>Utilities</span>
@@ -106,8 +106,8 @@
         <a class="collapse-item" routerLinkActive="active" [routerLink]="['/rolSetting']">Rol Setting</a>
         <div class="collapse-divider"></div>
         <h6 class="collapse-header">Other Pages:</h6>
-        <a class="collapse-item" href="#">404 Page</a>
-        <a class="collapse-item" href="#">Blank Page</a>
+        <a class="collapse-item" [routerLink]="['/']">404 Page</a>
+        <a class="collapse-item" [routerLink]="['/']">Blank Page</a>
       </div>
     </div>
   </li>
@@ -127,7 +127,7 @@
       <img class="sidebar-card-illustration mb-2" src="../../../../assets/img/undraw_rocket.svg" alt="...">
       <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!
       </p>
-      <a class="btn btn-success btn-sm" href="#">Upgrade to Pro!</a>
+      <a class="btn btn-success btn-sm" [routerLink]="['/']">Upgrade to Pro!</a>
     </div>
 
   </ul>

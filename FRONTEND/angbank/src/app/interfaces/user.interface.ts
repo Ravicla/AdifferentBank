@@ -8,5 +8,6 @@ export interface User {
   birthdate: Date;
   emailAddress: string;
   phoneNumber: string;
-  rol: Rol;
+  status: boolean;
+  rol: Rol[];
 }

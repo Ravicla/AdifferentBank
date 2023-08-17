@@ -18,6 +18,7 @@ public class Usuario {
   private Date fechaNacimiento;
   private String correo;
   private String telefono;
+  private Boolean estado;
 
   public Integer getIdUsuario() {
     return idUsuario;
@@ -75,4 +76,11 @@ public class Usuario {
     this.telefono = telefono;
   }
 
+  public Boolean getEstado() {
+    return estado;
+  }
+
+  public void setEstado(Boolean estado) {
+    this.estado = estado;
+  }
 }

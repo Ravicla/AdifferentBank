@@ -13,12 +13,13 @@
             </div>
             <div class="card-body">
               <div class="chart-area pt-4 pb-2">
-                <form  class="user">
+                <form [formGroup]="formModel"(ngSubmit)="getDataForm()" class="user">
                   <div class="form-group">
                     <input type="text" class="form-control form-control-user" id="description" formControlName="description"
                       placeholder="Description">
+                      <p class="error" *ngIf="checkControl('description', 'required')">Campo requerido</p>
                   </div>
-                  <input type="submit" value="Create Activity" class="btn btn-primary btn-user btn-block" [disabled]="">
+                  <input type="submit" value="Create Activity" class="btn btn-primary btn-user btn-block" [disabled]="!formModel.valid">
                 </form>
               </div>
             </div>

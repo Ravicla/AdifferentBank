@@ -2,7 +2,7 @@ package com.ravicla.jabank.domain;
 
 public class Rol {
   private int rolId;
-  private String rol;
+  private String description;
 
   public int getRolId() {
     return rolId;
@@ -12,11 +12,11 @@ public class Rol {
     this.rolId = rolId;
   }
 
-  public String getRol() {
-    return rol;
+  public String getDescription() {
+    return description;
   }
 
-  public void setRol(String rol) {
-    this.rol = rol;
+  public void setDescription(String description) {
+    this.description = description;
   }
 }

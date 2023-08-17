@@ -7,7 +7,7 @@ import java.util.Date;
 public class MonthlySaving {
   private int monthlySavingId;
   private Date date;
-  private Double cost;
+  private Double value;
   private int userId;
 
   public int getMonthlySavingId() {
@@ -26,12 +26,12 @@ public class MonthlySaving {
     this.date = date;
   }
 
-  public Double getCost() {
-    return cost;
+  public Double getValue() {
+    return value;
   }
 
-  public void setCost(Double cost) {
-    this.cost = cost;
+  public void setValue(Double value) {
+    this.value = value;
   }
 
   public int getUserId() {

@@ -40,7 +40,8 @@ import { ActivitySettingComponent } from './components/admin/setting/activity-se
     Page404Component,
     UserViewComponent,
     RolSettingComponent,
-    ActivitySettingComponent
+    ActivitySettingComponent,
+   
   ],
   imports: [
     BrowserModule,

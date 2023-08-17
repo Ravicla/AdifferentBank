@@ -3,8 +3,8 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Lista de usuarios</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-      class="fas fa-download fa-sm text-white-50"></i> Generate Report
+    <a [routerLink]="['/']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        class="fas fa-download fa-sm text-white-50"></i> Generate Report
     </a>
   </div>
 
@@ -43,16 +43,21 @@
                 <p class="fw-bold mb-1">{{user?.emailAddress}}</p>
                 <p class="text-muted mb-0">{{user?.phoneNumber}}</p>
               </td>
-              <td class="align-middle">{{user?.rol}}</td>
-              
+
+              <td class="align-middle">
+                <ul>
+                  <li *ngFor="let rol of user.rol">{{rol.description}}</li>
+                </ul>
+              </td>
+
               <td class="align-middle">
                 <button class="btn btn-sm ">
-                  <i class="fa-solid fa-sync"></i><br>  
+                  <i class="fa-solid fa-sync"></i><br>
                 </button>
                 <button class="btn btn-sm">
                   <i class="fas fa-fw fa-trash"></i><br> <!-- fas fa-fw fa-trash fa-bounce-->
                 </button>
-                <button class="btn btn-sm" [routerLink]="['/userList', user.firstName]">  
+                <button class="btn btn-sm" [routerLink]="['/user', user.userId]">
                   <i class="fas fa-fw fa-eye "></i><br>
                 </button>
               </td>
