@@ -3,29 +3,26 @@
 
     <div *ngIf="user" class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">{{ user.firstName }} {{ user.lastName }}</h1>
+      
       <button class="btn" [ngClass]="{ 'btn-primary': user.status, 'btn-danger': !user.status }"(click)="changeStatus(user)">
         {{ user.status ? 'Activo' : 'Inactivo' }}
       </button>
-
 
       <button [routerLink]="['/users']" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
         class="fas fa-arrow-right fa-sm text-white-50"></i>
       </button>
 
-      <!--<div>
-        <button [routerLink]="['/user', user?.firstName + user?.lastName, 'caracteristicas']">Caracteristicas</button>
-        <button [routerLink]="['/user', user?.firstName + user?.lastName,'opiniones']">Opiniones</button>
-      </div>-->
-
-
     </div>
+    
     <hr>
-
     <p>Lorem ipsum dolor sit, ndus recusandae suscipit.</p>
-
-
+    
+    <div>
+      <button [routerLink]="['/user', user.userId, 'caracteristicas']">Caracteristicas</button>
+      <button [routerLink]="['/user', user.userId,'opiniones']">Opiniones</button>
+    </div>
 
   </div>
+  
   <router-outlet></router-outlet>
-
 </div>

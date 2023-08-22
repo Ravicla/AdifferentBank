@@ -1,4 +1,4 @@
 export interface TypeActivity {
-  typeActivityId: number;
+  typeActivityId?: number;
   activity: string;
 }

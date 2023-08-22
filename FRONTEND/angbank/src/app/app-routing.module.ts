@@ -17,7 +17,9 @@ import { OpinionesComponent } from './components/admin/user-view/opiniones/opini
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   { path: 'dashboard', component: DashboardComponent },
+
   { path: 'newUser', component: UserFormComponent },
+  { path: 'updateUser/:iduser', component: UserFormComponent },
 
   { path: 'users', component: UserListComponent },
   { path: 'user/:iduser', component: UserViewComponent, children: [
@@ -27,6 +29,7 @@ const routes: Routes = [
   
   { path: 'newActivity', component: ActivityFormComponent },
   { path: 'activityList', component: ActivityListComponent },
+  
   { path: 'newCredit', component: CreditFormComponent },
   { path: 'creditList', component: CreditListComponent },
 

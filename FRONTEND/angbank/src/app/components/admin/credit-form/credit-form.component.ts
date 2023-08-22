@@ -46,7 +46,6 @@ export class CreditFormComponent implements OnInit{
 
   getDataForm(){
     if (this.formModel.valid) {
-      console.log(this.formModel.value)
     } else {
       alert('el formulario no esta bien relleno')
     }

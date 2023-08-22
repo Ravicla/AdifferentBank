@@ -15,61 +15,75 @@
               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
             </div>
 
-            <form [formGroup]="formModel"(ngSubmit)="getDataForm()" class="user">
-              
+            <form [formGroup]="userForm" (ngSubmit)="getDataForm()" class="user">
+
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="identificationNumber" formControlName="identificationNumber"
+                <input type="text" class="form-control" id="identificationNumber" formControlName="identificationNumber"
                   placeholder="Identification Number">
               </div>
-              
+
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="firstName" formControlName="firstName"
+                  <input type="text" class="form-control" id="firstName" formControlName="firstName"
                     placeholder="First Name">
-                    <p class="error" *ngIf="checkControl('firstName', 'required')">Campo requerido</p>
-                    <p class="error" *ngIf="checkControl('firstName', 'minlength')">Longitud minina de 3 carcaters</p>
+                  <p class="error" *ngIf="checkControl('firstName', 'required')">Campo requerido</p>
+                  <p class="error" *ngIf="checkControl('firstName', 'minlength')">Longitud minina de 3 carcaters</p>
                 </div>
-
                 <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="lastName" formControlName="lastName"
-                    placeholder="Last Name">   
-                </div>
-
+                  <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                    placeholder="Last Name">
+                </div>           
               </div>
+
               <div class="form-group">
-                <input type="date" class="form-control form-control-user" id="birthdate" formControlName="birthdate"
+                <input type="date" class="form-control" id="birthdate" formControlName="birthdate"
                   placeholder="Birthdate">
               </div>
 
-              <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="emailAddress" formControlName="emailAddress"
-                  placeholder="Email Address">
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="email" class="form-control" id="emailAddress" formControlName="emailAddress"
+                    placeholder="Email Address">
                   <p class="error" *ngIf="checkControl('email', 'required')">Campo requerido</p>
                   <p class="error" *ngIf="checkControl('email', 'pattern')">El email tiene que ser valido</p>
+                </div>
+
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber"
+                    placeholder="Phone Number">
+                  <p class="error" *ngIf="checkControl('phoneNumber', 'phoneNumbervalidator')">{{
+                    userForm.get('phoneNumber')?.errors?.['phoneNumbervalidator'] }}
+                  </p>
+                </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="phoneNumber" class="form-control form-control-user" id="phoneNumber" formControlName="phoneNumber"
-                    placeholder="Phone Number">
-                    <p class="error" *ngIf="checkControl('phoneNumber', 'phoneNumbervalidator')">{{ formModel.get('phoneNumber')?.errors?.['phoneNumbervalidator'] }}</p>
+                  <select id="rol" class="form-select form-control " formControlName="rol">
+                    <option value="" >Select Rol</option>
+                    <option *ngFor="let rol of roles | async" [value]="rol.rolId">{{ rol.description }}</option>
+                    <p class="error" *ngIf="checkControl('rol', 'required')">Selecciona un rol</p>
+
+                  </select>
                 </div>
 
+                <!--
                 <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="rol" formControlName="rol"
-                    placeholder="Rol">
+                  <select id="roladd" class="form-select form-control " formControlName="roladd">
+                    <option value="" >Add new Rol</option>
+                    <option *ngFor="let rol of roles | async" [value]="rol.id">{{ rol.description }}</option>
+                  </select>
                 </div>
+                -->
+
               </div>
 
-              <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block" [disabled]="!formModel.valid">
-              {{formModel.valid}}
+              <input type="submit" value="Register Account" class="btn btn-primary btn-user btn-block"
+                [disabled]="!userForm.valid">
+              {{userForm.valid}}
               
             </form>
-
-            <hr>
-            <div class="text-center">
-              <a class="small" href="forgot-password.html">Forgot Password?</a>
-            </div>
+            <hr>            
             <div class="text-center">
               <a class="small" href="login.html">Already have an account? Login!</a>
             </div>
@@ -78,74 +92,4 @@
       </div>
     </div>
   </div>
-
 </div>
-
-
-
-
-
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-  <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-      
-  </p>
-
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
-      <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-      </div>
-      <div class="card-body">
-          <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
-                      </tr>
-                  </thead>
-                  <tfoot>
-                      <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
-                      </tr>
-                  </tfoot>
-                  <tbody>
-                      <tr>
-                          <td>Tiger Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
-                          <td>2011/04/25</td>
-                          <td>$320,800</td>
-                      </tr>
-                      <tr>
-                          <td>Garrett Winters</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>63</td>
-                          <td>2011/07/25</td>
-                          <td>$170,750</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-  </div>
-
-</div>
-
-<!-- /.container-fluid -->

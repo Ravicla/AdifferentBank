@@ -13,7 +13,7 @@ export class UsersService {
   }
 
   create(pUser: User): Promise<any> {  
-    return lastValueFrom(this.httpClient.post<User>(this.baseUrl+'save', pUser))
+    return lastValueFrom(this.httpClient.post<User>(this.baseUrl + 'save', pUser));
   }
 
   getAll(): Promise<any> {

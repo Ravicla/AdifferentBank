@@ -40,8 +40,15 @@
               </td>
               <td class="align-middle">{{user?.birthdate}}</td>
               <td>
-                <p class="fw-bold mb-1">{{user?.emailAddress}}</p>
-                <p class="text-muted mb-0">{{user?.phoneNumber}}</p>
+                <p class="fw-bold mb-1"> 
+                  <a [href]=" 'mailto:' + user?.emailAddress"> {{user?.emailAddress}}</a>
+                </p>
+                
+                <p class="text-muted mb-0">
+                  <a [href]="'https://api.whatsapp.com/send?phone=' + user?.phoneNumber" target="_blank">
+                    {{user?.phoneNumber}}
+                  </a>
+                </p>
               </td>
 
               <td class="align-middle">
@@ -51,15 +58,16 @@
               </td>
 
               <td class="align-middle">
-                <button class="btn btn-sm ">
-                  <i class="fa-solid fa-sync"></i><br>
+                <button class="btn btn-sm" [routerLink]="['/user', user.userId]">
+                  <i class="fas fa-fw fa-eye"></i><br>
                 </button>
-                <button class="btn btn-sm">
+                <button class="btn btn-sm" [routerLink]="['/updateUser', user.userId]">
+                  <i class="fa-solid fa-pen-to-square"></i><br>
+                </button>
+                <button class="btn btn-sm" (click)="deleteUser(user.userId)">
                   <i class="fas fa-fw fa-trash"></i><br> <!-- fas fa-fw fa-trash fa-bounce-->
                 </button>
-                <button class="btn btn-sm" [routerLink]="['/user', user.userId]">
-                  <i class="fas fa-fw fa-eye "></i><br>
-                </button>
+                
               </td>
             </tr>
           </tbody>
