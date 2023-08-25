@@ -17,21 +17,22 @@ export class UserListComponent implements OnInit{
   users: User [] = [];
 
   
+
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private usersService: UsersService,
   ) {}
 
   ngOnInit(): void {
+
     this.activatedRoute.params.subscribe(async(params: any) => {
       let response = await this.usersService.getAll();
-      console.log(response)
 
       if (response && response.length > 0) {
         response.forEach((user: User) => {
           if (user.rol && user.rol.length > 0) {
             const rolDescription = user.rol[0].description;
-            console.log(rolDescription);
           } else {
             console.log("No se encontró información de rol para el usuario.");
           }
@@ -60,6 +61,8 @@ export class UserListComponent implements OnInit{
       .catch(err => console.log(err));
     }
   }
+
+
   
 
 }

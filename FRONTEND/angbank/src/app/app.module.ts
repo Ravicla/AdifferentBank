@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/shared/home/home.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
@@ -19,8 +19,10 @@ import { ActivityListComponent } from './components/admin/activity-list/activity
 import { CreditListComponent } from './components/admin/credit-list/credit-list.component';
 import { Page404Component } from './components/shared/page404/page404.component';
 import { UserViewComponent } from './components/admin/user-view/user-view.component';
-import { RolSettingComponent } from './components/admin/setting/rol-setting/rol-setting.component';
-import { ActivitySettingComponent } from './components/admin/setting/activity-setting/activity-setting.component';
+import { TypeActivityFormComponent } from './components/admin/setting/typeActivity/type-activity-form/type-activity-form.component';
+import { TypeActivityListComponent } from './components/admin/setting/typeActivity/type-activity-list/type-activity-list.component';
+import { RolListComponent } from './components/admin/setting/rol/rol-list/rol-list.component';
+import { RolFormComponent } from './components/admin/setting/rol/rol-form/rol-form.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,10 @@ import { ActivitySettingComponent } from './components/admin/setting/activity-se
     ActivityListComponent,
     Page404Component,
     UserViewComponent,
-    RolSettingComponent,
-    ActivitySettingComponent,
-   
+    TypeActivityFormComponent,
+    TypeActivityListComponent,
+    RolListComponent,
+    RolFormComponent
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,8 @@ import { UsersService } from 'src/app/services/users.service';
 export class UserFormComponent implements OnInit{
   user: User | any;
   roles: Rol | any;
-  userForm: FormGroup
+  userForm: FormGroup;
+  type: string = "Create";
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -63,9 +64,34 @@ export class UserFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.roles = this.rolesService.getAll();
+
+    this.activatedRoute.params.subscribe(async (params: any) => {
+      let id: number = parseInt(params.userId);
+      if(id) {
+        this.type = 'Update'
+        const response = await this.usersService.getById(id)
+        
+        /*En el video y ejercicio esta asi
+         const user: User = response.data */
+        const user: User = response
+        console.log(user);
+
+        this.userForm = new FormGroup({
+          identificationNumber: new FormControl(user?.identificationNumber, []),
+          firstName: new FormControl(user?.firstName, []),
+          lastName: new FormControl(user?.lastName, []),
+          birthdate: new FormControl(user?.birthdate, []),
+          emailAddress: new FormControl(user?.emailAddress, []),
+          phoneNumber: new FormControl(user?.phoneNumber, []),
+          rol: new FormControl(user.rol, []),
+          /*roladd: new FormControl('', [])*/
+          id: new FormControl(user?.userId, [])
+        }, [])    
+      }    
+    })
   }
 
-  async getDataForm(): Promise<void> {
+  /*async getDataForm(): Promise<void> {
     if (this.userForm.valid) {
       let newUser = this.userForm.value;
       newUser.status = true; 
@@ -73,8 +99,7 @@ export class UserFormComponent implements OnInit{
       newUser.rol = [{ rolId: newUser.rol }];
       try {
         let response = await this.usersService.create(newUser);
-        console.log(response);
-  
+        console.log(response);  
         if (response.userId) {
           this.router.navigate(['/users']);
         } 
@@ -85,7 +110,48 @@ export class UserFormComponent implements OnInit{
     } else {
       alert('El formulario no está bien rellenado');
     }
+  }*/
+
+  async getDataForm(): Promise<void> {
+    if (this.userForm.valid) {
+      let newUser = this.userForm.value;
+  
+      if (newUser.id) {
+        // Actualizando usuario existente
+        newUser.rol = [{ rolId: newUser.rol }];
+        try {
+          let response = await this.usersService.update(newUser);
+  
+          if (response.updatedAt) {
+            alert('Usuario actualizado');
+            this.router.navigate(['/agenda']);
+          }
+        } catch (error) {
+          console.error(error);
+          alert('Error al actualizar el usuario');
+        }
+      } else {
+        // Creando nuevo usuario
+        newUser.status = true;
+        newUser.rol = [{ rolId: newUser.rol }];
+        try {
+          let response = await this.usersService.create(newUser);
+  
+          if (response.id) {
+            this.router.navigate(['/agenda']);
+          } else {
+            alert('Hubo un error al crear el usuario. Inténtelo de nuevo');
+          }
+        } catch (error) {
+          console.error(error);
+          alert('Error al guardar el usuario');
+        }
+      }
+    } else {
+      alert('El formulario no está bien rellenado');
+    }
   }
+  
 
   
 

@@ -10,3 +10,13 @@ input.ng-valid.ng-touched{
   color: tomato;
   font-size: 12px;
 }
+
+select.ng-invalid.ng-touched{
+  border-bottom: 3px solid red;
+}
+
+select.ng-valid.ng-touched{
+  border-bottom: 3px solid lightgreen;
+}
+
+

@@ -18,7 +18,7 @@ export class UserViewComponent implements OnInit{
   
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async (params: any) => {
-      const userId = params['iduser'];
+      const userId = params['userId'];
       this.user = await this.usersService. getById(userId); // Cambiar a la función que obtiene un usuario por ID
     });
   }
