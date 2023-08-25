@@ -35,26 +35,16 @@ const routes: Routes = [
   { path: 'newCredit', component: CreditFormComponent },
   { path: 'creditList', component: CreditListComponent },
 
-  { path: 'typeActivityForm', component: TypeActivityFormComponent, children: [
-    {path: 'typeActivities', component: TypeActivityListComponent }
-  ] },
+  { path: 'typeActivityForm', component: TypeActivityFormComponent },
   { path: 'updateTypeActivity/:typeActivityId', component: TypeActivityFormComponent },
-
-
-  
-
-
+  { path: 'typeActivities', component: TypeActivityListComponent },
 
   { path: 'rolForm', component: RolFormComponent },
   { path: 'updateRol/:rolId', component: RolFormComponent },
   { path: 'roles', component: RolListComponent },
 
 
-
-
   { path: '**', component: Page404Component }, 
-
-  
 
   
 ];

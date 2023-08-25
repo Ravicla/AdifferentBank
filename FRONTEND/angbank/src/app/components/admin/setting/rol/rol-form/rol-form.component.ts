@@ -22,8 +22,8 @@ export class RolFormComponent implements OnInit{
 
     this.rolForm = new FormGroup ({
       description: new FormControl('', [
-        //Validators.required,
-        //Validators.minLength(3)
+        Validators.required,
+        Validators.minLength(3)
       ])
     }, []);
   }

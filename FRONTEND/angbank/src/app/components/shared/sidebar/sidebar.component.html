@@ -100,14 +100,13 @@
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Custom Utilities:</h6>
-        
-        <a class="collapse-item" routerLinkActive="active" [routerLink]="['/typeActivityForm']">Activity Setting</a>
-        <a class="collapse-item" routerLinkActive="active" [routerLink]="['/rolForm']">Rol Setting</a>
+        <h6 class="collapse-header">Type Activity Setting:</h6>        
+        <a class="collapse-item" routerLinkActive="active" [routerLink]="['/typeActivities']">Type Activities List</a>
+        <a class="collapse-item" routerLinkActive="active" [routerLink]="['/typeActivityForm']">Create Type Activity</a>
         <div class="collapse-divider"></div>
-        <h6 class="collapse-header">Other Pages:</h6>
-        <a class="collapse-item" [routerLink]="['/']">404 Page</a>
-        <a class="collapse-item" [routerLink]="['/']">Blank Page</a>
+        <h6 class="collapse-header">Role Setting:</h6>
+        <a class="collapse-item" routerLinkActive="active" [routerLink]="['/roles']">Roles List</a>
+        <a class="collapse-item" routerLinkActive="active" [routerLink]="['/rolForm']">Create Rol</a>
       </div>
     </div>
   </li>

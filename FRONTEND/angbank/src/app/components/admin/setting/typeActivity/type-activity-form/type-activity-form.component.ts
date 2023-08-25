@@ -38,14 +38,14 @@ export class TypeActivityFormComponent implements OnInit{
 
       if (response.updatedAt) {
         alert('Type Activity actualizado')
-        this.router.navigate(['/typeActivityForm', 'typeActivities'])
+        this.router.navigate(['/typeActivities'])
       }
     } else {
       //creando
       let response = await this.typeActivitiesServices.create(newTypeActivity)
       console.log(response)
       if (response.typeActivityId) {
-        this.router.navigate(['/typeActivityForm', 'typeActivities'])
+        this.router.navigate(['/typeActivities'])
       } else {
         alert('Hubo un error intentelo de nuevo')
       }
@@ -62,7 +62,7 @@ export class TypeActivityFormComponent implements OnInit{
         console.log(typeActivity);
 
         this.typeActivityForm = new FormGroup({
-          typeActivity: new FormControl(typeActivity?.activity, []), 
+          activity: new FormControl(typeActivity?.activity, []), 
           id: new FormControl(typeActivity?.typeActivityId, [])
         }, [])
       }
