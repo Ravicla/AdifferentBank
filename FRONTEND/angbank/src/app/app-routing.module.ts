@@ -22,8 +22,8 @@ const routes: Routes = [
 
   { path: 'newUser', component: UserFormComponent },
   { path: 'updateUser/:userId', component: UserFormComponent },
-
   { path: 'users', component: UserListComponent },
+  
   { path: 'user/:userId', component: UserViewComponent, children: [
     { path: 'caracteristicas', component: CaracteristicasComponent },
     { path: 'opiniones', component: OpinionesComponent }

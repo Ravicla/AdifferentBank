@@ -15,9 +15,6 @@ export class UserListComponent implements OnInit{
   
   //users: User | any;
   users: User [] = [];
-
-  
-
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,13 +50,15 @@ export class UserListComponent implements OnInit{
       this.usersService.delete(pId)
       .then(response => {
         if (response === null) {
-          // Remover el usuario eliminado de la lista local
           this.users = this.users.filter(user => user.userId !== pId);
           alert('Usuario borrado correctamente');
         }
       })
       .catch(err => console.log(err));
     }
+  }
+  changeStatus(user: User) {
+    user.status = !user.status;
   }
 
 

@@ -12,7 +12,6 @@ import { UsersService } from 'src/app/services/users.service';
 })
 
 export class UserFormComponent implements OnInit{
-  user: User | any;
   roles: Rol | any;
   userForm: FormGroup;
   type: string = "Create";
@@ -48,9 +47,7 @@ export class UserFormComponent implements OnInit{
       ]),
       rol: new FormControl('', [
         //Validators.required
-      ]),
-      /*roladd: new FormControl('', [
-      ])*/
+      ])
     }, [])
   }
   
@@ -62,61 +59,11 @@ export class UserFormComponent implements OnInit{
     return null
   }
 
-  ngOnInit(): void {
-    this.roles = this.rolesService.getAll();
-
-    this.activatedRoute.params.subscribe(async (params: any) => {
-      let id: number = parseInt(params.userId);
-      if(id) {
-        this.type = 'Update'
-        const response = await this.usersService.getById(id)
-        
-        /*En el video y ejercicio esta asi
-         const user: User = response.data */
-        const user: User = response
-        console.log(user);
-
-        this.userForm = new FormGroup({
-          identificationNumber: new FormControl(user?.identificationNumber, []),
-          firstName: new FormControl(user?.firstName, []),
-          lastName: new FormControl(user?.lastName, []),
-          birthdate: new FormControl(user?.birthdate, []),
-          emailAddress: new FormControl(user?.emailAddress, []),
-          phoneNumber: new FormControl(user?.phoneNumber, []),
-          rol: new FormControl(user.rol, []),
-          /*roladd: new FormControl('', [])*/
-          id: new FormControl(user?.userId, [])
-        }, [])    
-      }    
-    })
-  }
-
-  /*async getDataForm(): Promise<void> {
-    if (this.userForm.valid) {
-      let newUser = this.userForm.value;
-      newUser.status = true; 
-      console.log(newUser)
-      newUser.rol = [{ rolId: newUser.rol }];
-      try {
-        let response = await this.usersService.create(newUser);
-        console.log(response);  
-        if (response.userId) {
-          this.router.navigate(['/users']);
-        } 
-      } catch (error) {
-        console.error(error);
-        alert('Error al guardar el usuario');
-      }
-    } else {
-      alert('El formulario no está bien rellenado');
-    }
-  }*/
-
   async getDataForm(): Promise<void> {
     if (this.userForm.valid) {
       let newUser = this.userForm.value;
   
-      if (newUser.id) {
+      if (newUser.userId) {
         // Actualizando usuario existente
         newUser.rol = [{ rolId: newUser.rol }];
         try {
@@ -124,7 +71,7 @@ export class UserFormComponent implements OnInit{
   
           if (response.updatedAt) {
             alert('Usuario actualizado');
-            this.router.navigate(['/agenda']);
+            this.router.navigate(['/users']);
           }
         } catch (error) {
           console.error(error);
@@ -137,8 +84,8 @@ export class UserFormComponent implements OnInit{
         try {
           let response = await this.usersService.create(newUser);
   
-          if (response.id) {
-            this.router.navigate(['/agenda']);
+          if (response.userId) {
+            this.router.navigate(['/users']);
           } else {
             alert('Hubo un error al crear el usuario. Inténtelo de nuevo');
           }
@@ -151,11 +98,32 @@ export class UserFormComponent implements OnInit{
       alert('El formulario no está bien rellenado');
     }
   }
-  
 
-  
-
- 
+  ngOnInit(): void {
+    this.roles = this.rolesService.getAll();
+    this.activatedRoute.params.subscribe(async (params: any) => {
+      let id: number = parseInt(params.userId);
+      if(id) {
+        this.type = 'Update'
+        const response = await this.usersService.getById(id)
+        
+        /*En el video y ejercicio esta asi
+         const user: User = response.data */
+        const user: User = response
+        console.log(user);
+        this.userForm = new FormGroup({
+          identificationNumber: new FormControl(user?.identificationNumber, []),
+          firstName: new FormControl(user?.firstName, []),
+          lastName: new FormControl(user?.lastName, []),
+          birthdate: new FormControl(user?.birthdate, []),
+          emailAddress: new FormControl(user?.emailAddress, []),
+          phoneNumber: new FormControl(user?.phoneNumber, []),
+          rol: new FormControl(user.rol, []),
+          id: new FormControl(user?.userId, [])
+        }, [])    
+      }    
+    })
+  }
 
   checkControl(pControlName: string, pError: string): boolean {
     if (this.userForm.get(pControlName)?.hasError(pError) && this.userForm.get(pControlName)?.touched) {

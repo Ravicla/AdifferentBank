@@ -38,6 +38,7 @@
               <div class="form-group">
                 <input type="date" class="form-control" id="birthdate" formControlName="birthdate"
                   placeholder="Birthdate">
+                  <p *ngIf="checkControl('birthdate', 'required')">La fecha de nacimiento es requerida.</p>
               </div>
 
               <div class="form-group row">
@@ -67,20 +68,10 @@
                   </select>
                 </div>
 
-                <!--
-                <div class="col-sm-6">
-                  <select id="roladd" class="form-select form-control " formControlName="roladd">
-                    <option value="" >Add new Rol</option>
-                    <option *ngFor="let rol of roles | async" [value]="rol.id">{{ rol.description }}</option>
-                  </select>
-                </div>
-                -->
-
               </div>
 
               <input type="submit" [value]="type" class="btn btn-primary btn-user btn-block"
                 [disabled]="!userForm.valid">
-              {{userForm.valid}}
               
             </form>
             <hr>            

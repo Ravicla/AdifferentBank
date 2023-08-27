@@ -19,7 +19,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+        <!--<table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>Identification</th>
@@ -65,7 +65,56 @@
                   <i class="fa-solid fa-pen-to-square"></i><br>
                 </button>
                 <button class="btn btn-sm" (click)="deleteUser(user.userId)">
-                  <i class="fas fa-fw fa-trash"></i><br> <!-- fas fa-fw fa-trash fa-bounce-->
+                  <i class="fas fa-fw fa-trash"></i><br> 
+                </button>
+                
+              </td>
+            </tr>
+          </tbody>
+
+        </table> -->
+
+
+
+        <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Identification</th>
+              <th>Full Name</th>
+              <th>Rol</th>
+              <th>Status</th>              
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td class="align-middle">{{user?.identificationNumber}}</td>
+              <td>
+                <p class="fw-bold mb-1">{{user?.firstName}}</p>
+                <p class="text-muted mb-0">{{user?.lastName}}</p>
+              </td>
+              <td class="align-middle">
+                <ul>
+                  <li *ngFor="let rol of user.rol">{{rol.description}}</li>
+                </ul>
+              </td>
+
+              <td class="align-middle">
+                <button class="btn btn-sm" [ngClass]="{ 'btn-light': user.status, 'btn-danger': !user.status }"(click)="changeStatus(user)">
+                  {{ user.status ? 'Activo' : 'Inactivo' }}
+                </button>
+              </td> 
+
+              <td class="align-middle">
+                <button class="btn btn-sm" [routerLink]="['/user', user.userId]">
+                  <i class="fas fa-fw fa-eye"></i><br>
+                </button>
+                <button class="btn btn-sm" [routerLink]="['/updateUser', user.userId]">
+                  <i class="fa-solid fa-pen-to-square"></i><br>
+                </button>
+                <button class="btn btn-sm" (click)="deleteUser(user.userId)">
+                  <i class="fas fa-fw fa-trash"></i><br>
                 </button>
                 
               </td>
@@ -73,6 +122,7 @@
           </tbody>
 
         </table>
+
       </div>
 
     
