@@ -34,7 +34,6 @@ export class RolFormComponent implements OnInit{
     if (newRol.rolId) {
       //actualizando
       let response = await this.rolesServices.update(newRol);
-
       if (response.updatedAt) {
         alert('Rol actualizado')
         this.router.navigate(['/roles'])
